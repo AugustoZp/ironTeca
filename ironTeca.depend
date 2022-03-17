@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1647485282 source:d:\augustozpp\ud\cuatrimestre 5\programación estructurada\ironteca\main.cpp
+	<iostream>
+	<string.h>
+	<cstdlib>
+	<iomanip>
+	<string>
+
