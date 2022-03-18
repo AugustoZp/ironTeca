@@ -277,8 +277,7 @@ void reportar_libro()
 
 
 
-
-        cout << "\n Tu folio de seguimiento es: ";
+        cout << "\nTu reporte se ha generado con exíto\nTu folio de seguimiento es: ";
 
         cout<< folio;
         cout << ",correspondiente a los datos: \n"<<endl;
