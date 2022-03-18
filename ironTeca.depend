@@ -6,3 +6,11 @@
 	<iomanip>
 	<string>
 
+1647567097 source:c:\users\david\onedrive\escritorio\ironteca\main.cpp
+	<iostream>
+	<string.h>
+	<cstdlib>
+	<iomanip>
+	<string>
+	<locale.h>
+

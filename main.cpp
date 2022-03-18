@@ -7,9 +7,12 @@
 #include <string>
 #define TRUE 1
 #define FALSE 0
+#include<locale.h>
 using namespace std;
 
+
 void INICIO(string title)
+
 {
     int i;
     int val;
@@ -244,7 +247,7 @@ void registro_prestamos()
 void reportar_libro()
 {
     char libro_report[30];
-    string motivo;
+    char motivo[30];
     intmax_t telefono;
     int opcion;
     int folio;
@@ -256,23 +259,36 @@ void reportar_libro()
 
     system("cls");
         INICIO("REPORTA UN LIBRO");
-        cout << "Titulo del libro y motivo (seleccione una de estas: extraviado, robado, roto):"<<endl;
-        cin >> libro_report;
-        getline(cin,motivo);
-        cout << "Numero telefónico"<<endl;
-        cin>> telefono;
 
 
-        cout << "Tu folio de seguimiento es: ";
+     cout << "Introduzca el nombre del libro:";
+     cin>>libro_report;
+     cout << "\n";
+
+
+     cout << "motivo(seleccione solo una de estas: extraviado, robado, roto):";
+     cin.getline(motivo,sizeof(motivo));
+     cin>>motivo;
+     cout << "\n";
+
+
+     cout << "telefono: ";
+     cin>>telefono;
+
+
+
+
+        cout << "\n Tu folio de seguimiento es: ";
 
         cout<< folio;
-        cout << "correspondiente a los datos: \n"<<endl;
-        cout<< libro_report;
+        cout << ",correspondiente a los datos: \n"<<endl;
+
+        cout<<"libro: " << libro_report<< endl;
         cout << "\n";
-        cout<<motivo;
+        cout<<"motivo: " << motivo<< endl;
         cout << "\n";
-        cout<<telefono;
-        cout << "\n\n\n";
+        cout<<"telefono: " << telefono<< endl;
+        cout << "\n";
 
 
         cout << "1) <-- Volver al menú principal"<<endl;
