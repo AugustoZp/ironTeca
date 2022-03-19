@@ -251,7 +251,7 @@ void reportar_libro()
     intmax_t telefono;
     int opcion;
     int folio;
-    folio= 16;
+    folio = 100 + rand();
     bool repetir = true;
 
     do
@@ -262,23 +262,27 @@ void reportar_libro()
 
 
      cout << "Introduzca el nombre del libro:";
-     cin>>libro_report;
+     cin.getline(libro_report,sizeof(libro_report));
+     cin.getline(libro_report,80);
+
      cout << "\n";
 
 
      cout << "motivo(seleccione solo una de estas: extraviado, robado, roto):";
      cin.getline(motivo,sizeof(motivo));
-     cin>>motivo;
      cout << "\n";
 
 
      cout << "telefono: ";
      cin>>telefono;
+     cout << "\n";
 
 
 
         cout << "\nTu reporte se ha generado con exíto\nTu folio de seguimiento es: ";
 
+
+        cout<<telefono;
         cout<< folio;
         cout << ",correspondiente a los datos: \n"<<endl;
 
