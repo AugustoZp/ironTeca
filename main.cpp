@@ -60,6 +60,7 @@ void menu_principal();
           void libro_3();
           void libro_4();
           void libro_5();
+          void nodisp();
           void nombre_autor();
           void nombre_editorial();
                void registrar_usuario();
@@ -363,7 +364,7 @@ void libro_1()
         cout << "\n";
         cout << "\tEditorial: akal"<<endl;
         cout << "\n";
-        cout << "\tDisponibilidad:"<<endl;
+        cout << "\tDisponibilidad:Si"<<endl;
         cout << "\n";
         cout << "\t¿Que acción quiere realizar?:"<<endl;
         cout << "\n";
@@ -415,7 +416,7 @@ void libro_2()
         cout << "\n";
         cout << "\tEditorial: Anagrama"<<endl;
         cout << "\n";
-        cout << "\tDisponibilidad:"<<endl;
+        cout << "\tDisponibilidad:Si"<<endl;
         cout << "\n";
         cout << "\t¿Que acción quiere realizar?:"<<endl;
         cout << "\n";
@@ -467,7 +468,7 @@ void libro_3()
         cout << "\n";
         cout << "\tEditorial: Alfaguara"<<endl;
         cout << "\n";
-        cout << "\tDisponibilidad:"<<endl;
+        cout << "\tDisponibilidad:Si"<<endl;
         cout << "\n";
         cout << "\t¿Que acción quiere realizar?:"<<endl;
         cout << "\n";
@@ -519,7 +520,7 @@ void libro_4()
         cout << "\n";
         cout << "\tEditorial: Alianza"<<endl;
         cout << "\n";
-        cout << "\tDisponibilidad:"<<endl;
+        cout << "\tDisponibilidad:No"<<endl;
         cout << "\n";
         cout << "\t¿Que acción quiere realizar?:"<<endl;
         cout << "\n";
@@ -538,7 +539,7 @@ void libro_4()
             break;
 
           case 2:
-              registrar_usuario();
+              nodisp();
             break;
 
           case 0:
@@ -571,7 +572,7 @@ void libro_5()
         cout << "\n";
         cout << "\tEditorial: Astiberri"<<endl;
         cout << "\n";
-        cout << "\tDisponibilidad:"<<endl;
+        cout << "\tDisponibilidad:No"<<endl;
         cout << "\n";
         cout << "\t¿Que acción quiere realizar?:"<<endl;
         cout << "\n";
@@ -590,7 +591,7 @@ void libro_5()
             break;
 
           case 2:
-              registrar_usuario();
+              nodisp();
             break;
 
           case 0:
@@ -601,6 +602,46 @@ void libro_5()
 }
           //FIN LIBRO 5//
 
+          //LIBROS NO DISPONIBLES INICIA//
+void nodisp()
+{
+    int opcion;
+    bool repetir = true;
+
+    do
+    {
+        system("cls");
+        INICIO("\tUPS...");
+        cout << "\tEl libro no se encuentra disponible por el momento"<<endl;
+        cout << "\n";
+
+        cout << "\t¿Que acción quiere realizar?:"<<endl;
+        cout << "\n";
+
+        cout << "\t2) <-- Volver al menú de libros"<<endl;
+        cout << "\t1) <-- Volver al menú principal"<<endl;
+        cout << "\t0) Salir"<<endl;
+        cout << "\n \n\t";
+        cin >> opcion;
+        cout << "\n \n";
+
+        switch(opcion)
+          {
+          case 1:
+              menu_principal();
+            break;
+
+          case 2:
+              menu_libros();
+            break;
+
+          case 0:
+            exit(0);
+          }
+    } while(repetir);
+}
+
+          //LIBROS NO DISPONIBLES TERMINA//
 
           //NOMBRE DE AUTORES INICIA//
 void nombre_autor()
