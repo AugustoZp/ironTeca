@@ -2,14 +2,21 @@
 #include <string.h>
 #include <cstdlib>
 #include <iomanip>
+#include <fstream>
 #define YELLOW  "\x1b[33m"
 #define WHITE   "\x1B[37m"
-#include <string>
 #define TRUE 1
 #define FALSE 0
 #define USER "root"
 #define PASS "admin"
 using namespace std;
+
+string nombrelib;
+string nombreaut;
+string yea;
+string nombreedit;
+string simp;
+string scp;
 
           //INICIO DE TITULARES NO TOCAR//
 void INICIO(string title)
@@ -60,6 +67,7 @@ void menu_principal();
           void libro_3();
           void libro_4();
           void libro_5();
+          void libro_AGREGADO();
           void nodisp();
           void nombre_autor();
           void nombre_editorial();
@@ -82,6 +90,7 @@ void iniciar_como_admin();
 int main()
 {
     menu_inicio();
+
     return 0;
 }
 
@@ -103,7 +112,7 @@ void menu_inicio()
         cout << "\n";
         cout << "\t2) Iniciar como administrador -->"<<endl;
         cout << "\n";
-        cout << "\t0) salir."<<endl;
+        cout << "\t0) salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -145,6 +154,8 @@ void menu_principal()
         cout << "\n";
         cout << "\t3) Reporta un libro -->"<<endl;
         cout << "\n";
+        cout << "\t9) <-- Volver al menú de inicio"<<endl;
+        cout << "\n";
         cout << "\t0) salir."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
@@ -162,6 +173,10 @@ void menu_principal()
 
           case 3:
               reportar_libro();
+            break;
+
+          case 9:
+              menu_inicio();
             break;
 
           case 0:
@@ -201,7 +216,6 @@ void menu_libros()
         switch(opcion)
           {
           case 1:
-              cout << "MOANA HAZ TU CHAMBA MIJA - augusto :3"<<endl;
             break;
 
           case 2:
@@ -247,8 +261,8 @@ void registro_prestamos()
 
 
         cout << "\t1) <-- Volver al menú principal"<<endl;
-        cout << "\t0) Salir"<<endl;
-        cout << "\n \n";
+        cout << "\t0) Salir del programa."<<endl;
+        cout << "\n\n\t";
         cin >> opcion;
         cout << "\n \n";
 
@@ -291,12 +305,15 @@ void titulo_libros()
         cout << "\n";
         cout << "\t5) EL ORFANATO DE HESKINN -->"<<endl;
         cout << "\n";
+        ifstream archivo("LIBDISP.txt");
+        getline(archivo,nombrelib);
+        cout<<"\t6) "<<nombrelib<<" -->"<<endl;
 
         cout << "\n\n\n\n\n";
 
 
-        cout << "\t7) <-- Volver al menú de libros"<<endl;
-        cout << "\t6) <-- Volver al menú principal"<<endl;
+        cout << "\t8) <-- Volver al menú de libros"<<endl;
+        cout << "\t9) <-- Volver al menú principal"<<endl;
         cout << "\t0) Salir"<<endl;
         cout << "\n \n\t";
         cin >> opcion;
@@ -325,10 +342,14 @@ void titulo_libros()
             break;
 
           case 6:
+              libro_AGREGADO();
+            break;
+
+          case 9:
               menu_principal();
             break;
 
-          case 7:
+          case 8:
               menu_libros();
             break;
 
@@ -602,6 +623,65 @@ void libro_5()
 }
           //FIN LIBRO 5//
 
+          //LIBRO AGREGADO//
+void libro_AGREGADO()
+{
+    int opcion;
+    bool repetir = true;
+
+    do
+    {
+        system("cls");
+        INICIO(nombrelib);
+
+        ifstream archivo("LIBDISP.txt");
+        getline(archivo,nombrelib);
+        cout << "\tTitulo: "<<nombrelib<<endl;
+        cout << "\n";
+        getline(archivo,nombreaut);
+        cout << "\tAutor: "<<nombreaut<<endl;
+        cout << "\n";
+        getline(archivo,yea);
+        cout << "\tAño de publicación: "<<yea<<endl;
+        cout << "\n";
+        getline(archivo,nombreedit);
+        cout << "\tEditorial: "<<nombreedit<<endl;
+        cout << "\n";
+        getline(archivo,simp);
+        cout << "\tSinopsis: "<<simp<<endl;
+        cout << "\n";
+        cout << "\tDisponibilidad: "<<scp<<endl;
+        cout << "\n\n";
+        cout << "\t¿Que acción desea realizar?:"<<endl;
+        cout << "\n";
+
+
+        cout << "\t1) <-- Volver al menú principal"<<endl;
+        cout << "\t2) Solicitar préstamo -->"<<endl;
+        cout << "\t0) Salir del programa."<<endl;
+        cout << "\n \n\t";
+        cin >> opcion;
+        cout << "\n \n";
+
+        switch(opcion)
+          {
+          case 1:
+              menu_principal();
+            break;
+
+          case 2:
+              registrar_usuario();
+            break;
+
+          case 0:
+              cout << "\t¡¡Hasta luego!!"<<endl;
+            exit(0);
+          }
+    } while(repetir);
+}
+          //FIN LIBRO AGREGADO//
+
+
           //LIBROS NO DISPONIBLES INICIA//
 void nodisp()
 {
@@ -766,18 +846,18 @@ void registrar_usuario()
     cout << "\tPor favor introduce los datos solicitados​:";
     cout << "\n \n";
 
-     cout << "\tNombre completo:";
+     cout << "\tNombre completo:\n\t";
      cin.getline(nombre_com,sizeof(nombre_com));
      cin.getline(nombre_com,50);
      cout << "\n";
 
 
-     cout << "\tMatricula:";
+     cout << "\tMatricula:\n\t";
      cin>>matricula;
      cout << "\n";
 
 
-     cout << "\tCarrera:​";
+     cout << "\tCarrera:​\n\t";
      cin.getline(carrera,sizeof(carrera));
      cin.getline(carrera,50);
      cout << "\n";
@@ -799,7 +879,7 @@ void registrar_usuario()
 
 
         cout << "\t1) <-- Volver al menú principal"<<endl;
-        cout << "\t0) Salir"<<endl;
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -838,36 +918,32 @@ void reportar_libro()
         INICIO("REPORTA UN LIBRO");
 
 
-     cout << "\tIntroduzca el nombre del libro:";
+     cout << "\tIntroduzca el nombre del libro:\n\t";
      cin.getline(libro_report,sizeof(libro_report));
      cin.getline(libro_report,80);
 
      cout << "\n";
 
 
-     cout << "\tMotivo(seleccione solo una de estas: extraviado, robado, roto):";
+     cout << "\tMotivo(seleccione solo una de estas: extraviado, robado, roto):\n\t";
      cin.getline(motivo,sizeof(motivo));
      cout << "\n";
 
 
-     cout << "\tTelefono: ";
+     cout << "\tTelefono:\n\t";
      cin>>telefono;
      cout << "\n";
 
 
 
-        cout << "\n\tTu reporte se ha generado con exíto\n\tTu folio de seguimiento es: ";
+        cout << "\n\t¡Tu reporte se ha generado con exíto!\n\tTu folio de seguimiento es: "<<telefono<<folio;
+        cout << ", correspondiente a los datos: \n"<<endl;
 
-
-        cout<<telefono;
-        cout<< folio;
-        cout << ",correspondiente a los datos: \n"<<endl;
-
-        cout<<"\tlibro: " << libro_report<< endl;
+        cout<<"\tLibro: " << libro_report<< endl;
         cout << "\n";
-        cout<<"\tmotivo: " << motivo<< endl;
+        cout<<"\tMotivo: " << motivo<< endl;
         cout << "\n";
-        cout<<"\ttelefono: " << telefono<< endl;
+        cout<<"\tTelefono: " << telefono<< endl;
         cout << "\n";
 
 
@@ -977,7 +1053,9 @@ void menu_admin()
         cout << "\n";
         cout << "\t2) Eliminar un libro -->"<<endl;
         cout << "\n";
-        cout << "\t0) salir."<<endl;
+        cout << "\t9) <-- Volver al menú de inicio"<<endl;
+        cout << "\n";
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -992,6 +1070,10 @@ void menu_admin()
               eliminar();
             break;
 
+          case 9:
+              menu_inicio();
+            break;
+
           case 0:
               cout << "\t¡¡Hasta luego!!"<<endl;
             exit(0);
@@ -1004,7 +1086,97 @@ void menu_admin()
            //AGREGAR INICIA//
 void agregar()
 {
-cout << "\t!Bienvenido¡ por favor, selecciona la opción deseada."<<endl;
+    ofstream archivo;
+
+    int opcion;
+    bool repetir = true;
+
+    archivo.open("LIBDISP.txt",ios::out);
+
+        if(archivo.fail()){
+        cout<<"El archivo no se ejecutó correctamente";
+        exit(1);
+                          }
+    do
+    {
+        system("cls");
+        INICIO("AGREGAR LIBRO (ADMINISTRADOR)");
+        cout << "\tPor favor, introduce los siguientes datos."<<endl;
+        cout << "\n \n";
+        cout << "\tNombre de libro: "<<endl;
+        cout << "\n\t";
+        fflush(stdin);
+        getline(cin,nombrelib);
+        archivo<<nombrelib<<endl;
+        cout << "\n \n";
+        cout << "\tNombre del Autor: "<<endl;
+        cout << "\n\t";
+        fflush(stdin);
+        getline(cin,nombreaut);
+        archivo<<nombreaut<<endl;
+        cout << "\n \n";
+        cout << "\tAño de publicación: "<<endl;
+        cout << "\n\t";
+        fflush(stdin);
+        getline(cin,yea);
+        archivo<<yea<<endl;
+        cout << "\n \n";
+        cout << "\tEditorial: "<<endl;
+        cout << "\n\t";
+        fflush(stdin);
+        getline(cin,nombreedit);
+        archivo<<nombreedit<<endl;
+        cout << "\n \n";
+        cout << "\tSinopsis: "<<endl;
+        cout << "\n\t";
+        fflush(stdin);
+        getline(cin,simp);
+        archivo<<simp<<endl;
+        cout << "\n \n";
+        cout << "\tDISPONIBLE EN BIBLIOTECA(indique SI o NO): "<<endl;
+        cout << "\n\t";
+        fflush(stdin);
+        getline(cin,scp);
+        archivo<<scp<<endl;
+        cout << "\n\n";
+
+        archivo.close();
+
+
+        cout << "\t1) Ver libros agregados -->"<<endl;
+        cout << "\n";
+        cout << "\t8) <-- Volver al menú principal(administrador)"<<endl;
+        cout << "\n";
+        cout << "\t9) <-- Volver al menú principal(usuario)"<<endl;
+        cout << "\n";
+        cout << "\t0) salir."<<endl;
+        cout << "\n \n\t";
+        cin >> opcion;
+        cout << "\n \n";
+
+        switch(opcion)
+          {
+          case 1:
+              titulo_libros();
+            break;
+
+          case 8:
+              menu_admin();
+            break;
+
+          case 9:
+              menu_principal();
+            break;
+
+          case 0:
+              cout << "\t¡¡Hasta luego!!"<<endl;
+            exit(0);
+          }
+
+
+
+
+    } while(repetir);
 }
            //AGREGAR TERMINA//
 
@@ -1012,6 +1184,5 @@ cout << "\t!Bienvenido¡ por favor, selecciona la opción deseada."<<endl;
            //ELIMINAR INICIA//
 void eliminar()
 {
-cout << "\t!Bienvenido¡ por favor, selecciona la opción deseada."<<endl;
 }
            //ELIMINAR TERMINA//
