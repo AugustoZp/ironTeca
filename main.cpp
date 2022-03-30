@@ -3,20 +3,32 @@
 #include <cstdlib>
 #include <iomanip>
 #include <fstream>
+#include <conio.h>
 #define YELLOW  "\x1b[33m"
 #define WHITE   "\x1B[37m"
 #define TRUE 1
 #define FALSE 0
-#define USER "root"
-#define PASS "admin"
+#define USER "root"  //USUARIO PARA INICIAR SESIÓN EN MODO ADMIN//
+#define PASS "admin"  //CONTRASEÑA PARA INICIAR SESIÓN EN MODO ADMIN//
 using namespace std;
 
+
+
+          //COMPONENTES DE AGREGAR LIBRO//
 string nombrelib;
 string nombreaut;
 string yea;
 string nombreedit;
 string simp;
 string scp;
+
+
+
+          //COMPONENTES DE REGISTRO DE ALUMNO//
+string nombrealm;
+string nombrecarr;
+string matri;
+
 
           //INICIO DE TITULARES NO TOCAR//
 void INICIO(string title)
@@ -60,7 +72,7 @@ void INICIO(string title)
 void menu_inicio();
 void menu_principal();
     void menu_libros();
-          void recomendaciones();
+          void recomendaciones(); //Falta - Momoru
           void titulo_libros();
           void libro_1();
           void libro_2();
@@ -73,16 +85,14 @@ void menu_principal();
           void nombre_editorial();
                void registrar_usuario();
     void registro_prestamos();
-    void registro_alumnos();
+    void registro_alumnos(); //Dudable... colocar o no?
     void reportar_libro();
 
 
 void iniciar_como_admin();
     void menu_admin();
          void agregar();
-         void eliminar();
-
-
+         void eliminar(); //Falta - Antonio
 
 
 
@@ -93,6 +103,11 @@ int main()
 
     return 0;
 }
+
+
+
+
+
 
 
           //MENU INICIO INICIA//
@@ -150,7 +165,7 @@ void menu_principal()
         cout << "\n \n";
         cout << "\t1) Ver libros -->"<<endl;
         cout << "\n";
-        cout << "\t2) Préstamos -->"<<endl;
+        cout << "\t2) Ver préstamos recientes -->"<<endl;
         cout << "\n";
         cout << "\t3) Reporta un libro -->"<<endl;
         cout << "\n";
@@ -247,16 +262,21 @@ void registro_prestamos()
     do
     {
         system("cls");
-        INICIO("REGISTRO DE PRÉSTAMOS REALIZADOS");
+        INICIO("REGISTRO DE PRÉSTAMOS RECIENTES");
 
-
-        cout << "\tNombre completo: "<<endl;
+        ifstream archivo2("REGALM.txt");
+        ifstream archivo("LIBDISP.txt");
+        getline(archivo2,nombrealm);
+        cout << "\tNombre completo: "<<nombrealm<<endl;
         cout << "\n";
-        cout << "\tMatrícula escolar: "<<endl;
+        getline(archivo2,matri);
+        cout << "\tMatrícula escolar: "<<matri<<endl;
         cout << "\n";
-        cout << "\tCarrera: Ing. Software y sistemas computacionales"<<endl;
+        getline(archivo2,nombrecarr);
+        cout << "\tCarrera: "<<nombrecarr<<endl;
         cout << "\n";
-        cout << "\tTítulo del libro: Patito feo"<<endl;
+        getline(archivo,nombrelib);
+        cout << "\tTítulo del libro: "<<nombrelib<<endl;
         cout << "\n\n\n\n\n";
 
 
@@ -829,9 +849,14 @@ void nombre_editorial()
           //REGISTRAR USUARIO INICIA//
 void registrar_usuario()
 {
-    char nombre_com[50];
-    float matricula;
-    char carrera[50];
+    ofstream archivo2;
+
+    archivo2.open("REGALM.txt",ios::out);
+
+        if(archivo2.fail()){
+        cout<<"Ha ocurrido un error, por favor inténtelo más tarde";
+        exit(1);
+                          }
     int opcion;
     int folio;
     folio = 100 + rand();
@@ -847,37 +872,33 @@ void registrar_usuario()
     cout << "\n \n";
 
      cout << "\tNombre completo:\n\t";
-     cin.getline(nombre_com,sizeof(nombre_com));
-     cin.getline(nombre_com,50);
+     fflush(stdin);
+     getline(cin,nombrealm);
+     archivo2<<nombrealm<<endl;
      cout << "\n";
 
 
      cout << "\tMatricula:\n\t";
-     cin>>matricula;
+     fflush(stdin);
+     getline(cin,matri);
+     archivo2<<matri<<endl;
      cout << "\n";
 
 
      cout << "\tCarrera:​\n\t";
-     cin.getline(carrera,sizeof(carrera));
-     cin.getline(carrera,50);
+     fflush(stdin);
+     getline(cin,nombrecarr);
+     archivo2<<nombrecarr<<endl;
      cout << "\n";
 
 
 
-        cout << "\t¡Usuario registrado con éxito!"<<endl;
+        cout << "\t¡Usuario registrado con éxito!\n"<<endl;
 
-        cout << "\t¡El préstamo se ha completado! puedes pasar a recoger el libro con tu folio: "<<matricula<<folio<<endl;
+        cout << "\t¡El préstamo se ha completado! puedes pasar a recoger el libro con el folio: "<<matri<<folio<<endl;
 
-        cout << "\tCorrespondiente a los datos: \n"<<endl;
-
-        cout<<"\tUsuario solicitante: "  << nombre_com<<endl;
-        cout << "\n";
-        cout<<"\tMatricula: " << matricula<< endl;
-        cout << "\n";
-        cout<<"\tCarrera: " << carrera<< endl;
-        cout << "\n";
-
-
+        archivo2.close();
+        cout << "\n\n\n";
         cout << "\t1) <-- Volver al menú principal"<<endl;
         cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
@@ -910,7 +931,6 @@ void reportar_libro()
     int folio;
     folio = 100 + rand();
     bool repetir = true;
-
     do
     {
 
@@ -934,24 +954,21 @@ void reportar_libro()
      cin>>telefono;
      cout << "\n";
 
+            cout << "\n\t¡Su reporte se ha generado con exíto!\n\tSu folio de seguimiento es: "<<telefono<<folio;
+            cout << ", correspondiente a los datos: \n"<<endl;
+            cout<<"\tLibro: " << libro_report<< endl;
+            cout << "\n";
+            cout<<"\tMotivo: " << motivo<< endl;
+            cout << "\n";
+            cout<<"\tTelefono: " << telefono<< endl;
+            cout << "\n";
+            cout << "En breves nos contactaremos con usted.\n"<<endl;
 
-
-        cout << "\n\t¡Tu reporte se ha generado con exíto!\n\tTu folio de seguimiento es: "<<telefono<<folio;
-        cout << ", correspondiente a los datos: \n"<<endl;
-
-        cout<<"\tLibro: " << libro_report<< endl;
-        cout << "\n";
-        cout<<"\tMotivo: " << motivo<< endl;
-        cout << "\n";
-        cout<<"\tTelefono: " << telefono<< endl;
-        cout << "\n";
-
-
-        cout << "\t1) <-- Volver al menú principal"<<endl;
-        cout << "\t0) Salir"<<endl;
-        cout << "\n \n\t";
-        cin >> opcion;
-        cout << "\n \n";
+            cout << "\t1) <-- Volver al menú principal"<<endl;
+            cout << "\t0) Salir"<<endl;
+            cout << "\n \n\t";
+            cin >> opcion;
+            cout << "\n \n";
 
         switch(opcion)
           {
@@ -974,7 +991,7 @@ void iniciar_como_admin()
 {
     int opcion;
     char user[10];
-    char pass[10];
+    string pass;
     int x = 1;
     bool repetir = true;
     bool c = false;
@@ -994,9 +1011,19 @@ void iniciar_como_admin()
 
             cout << "\n\tContrasena:"<<endl;
             cout << "\t";
-            cin >> pass;
+            //cin >> pass;
+            char caracter;
+            caracter = getch();
+            pass = "";
+            while(caracter!=13){
+                pass.push_back(caracter);
+            cout<<"*";
+            caracter = getch();
+            }
+
+
             x++;
-            if((strcmp(pass,PASS)==0) && (strcmp(user,USER)==0))
+            if((pass == PASS) && (strcmp(user,USER)==0))
             {
                c=true;
             }
