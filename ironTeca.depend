@@ -22,3 +22,13 @@
 	<fstream>
 	<conio.h>
 
+1648863927 source:c:\users\moana\documents\github\drop\ironteca\main.cpp
+	<iostream>
+	<string.h>
+	<cstdlib>
+	<iomanip>
+	<fstream>
+	<conio.h>
+	<stdlib.h>
+	<time.h>
+

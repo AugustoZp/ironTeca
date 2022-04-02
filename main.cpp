@@ -4,6 +4,8 @@
 #include <iomanip>
 #include <fstream>
 #include <conio.h>
+#include <stdlib.h>
+#include <time.h>
 #define YELLOW  "\x1b[33m"
 #define WHITE   "\x1B[37m"
 #define TRUE 1
@@ -300,6 +302,187 @@ void registro_prestamos()
 }
           //REGISTRO PRESTAMOS TERMINA//
 
+        //RECOMENDACIONES INICIO//
+void recomendaciones()
+{
+    int op;
+    int op_1;
+    int i;
+    int resp1;
+    int resp2;
+    int resp3;
+    int resp4;
+    int resp5;
+    srand(time(NULL));
+
+    do{
+
+        system("cls");
+        INICIO("RECOMENDACIONES");
+
+        cout <<"\t¡Bienvenido a esta sección!"<<endl;
+        cout <<endl;
+        cout <<"\tAquí te recomendaremos un libro de nuestro sistema."<<endl;
+        cout <<endl;
+        cout <<"\t¿Estas listo?\n"<<endl;
+        cout <<endl;
+
+        cout <<"\t"; system("pause");
+        cout <<"\n"<<endl;
+        cout <<"\tEl sistema lanzará un número y ese será el libro que le correspondrá"<<endl;
+        cout <<"\n"<<endl;
+        cout <<"\t"; system("pause");
+
+        cout << endl;
+        op = rand() % (5+1);
+        cout <<"\tHa tocado la opcion:"<< op;
+        cout <<"\n"<< endl;
+
+        cout <<"\t1) Opción 1\n"<<endl;
+        cout <<"\t2) Opción 2\n"<<endl;
+        cout <<"\t3) Opción 3\n"<<endl;
+        cout <<"\t4) Opción 4\n"<<endl;
+        cout <<"\t5) Opción 5\n"<<endl;
+        cout <<"\t0) Salir\n"<<endl;
+
+        cout <<"\tIngrese la opción brindo el sistema:"; cin>>op_1;
+
+        cout<<"\n"<<endl;
+
+        do {
+            switch (op_1){
+                case 1:
+                    cout<<"\tHa seleccionado la opción 1\n"<<endl;
+                    cout<<"\tLe gustaría ver este libro:\n"<<endl;
+                    cout<<"\t1) Si"<<endl;
+                    cout<<"\t2) Otra recomendación"<<endl;
+                    cout<<"\t3) Salir\n"<<endl;
+                    cout<<"\t"; cin>>resp1;
+
+                    if (resp1 == 3){
+                        menu_libros();
+                    }
+                    else if (resp1 == 2 ){
+                            cout<< "\tReiniciaremos el sistema"<<endl;
+                            cout<< "\tEspere un momento..."<<endl;
+
+                            recomendaciones();
+                        }
+                        else {
+                            libro_1();
+                        }
+                break;
+
+                case 2:
+                    cout<<"Has seleccionado la opción 2\n"<<endl;
+                    cout<<"Le gustaría ver este libro:\n"<<endl;
+                    cout<<"1) Si"<<endl;
+                    cout<<"2) Otra recomendación"<<endl;
+                    cout<<"3) Salir\n"<<endl;
+                    cin>>resp2;
+
+                    if (resp2 == 3){
+                        menu_libros();
+                    }
+                    else if (resp2 == 2 ){
+                            cout<< "\tDeje que limpiemos los resultados del sistema"<<endl;
+                            cout<< "\tEspere un momento..."<<endl;
+
+                            cout<<"\t"; system("pause");
+
+                            recomendaciones();
+                        }
+                        else {
+                            libro_2();
+                        }
+                break;
+
+                case 3:
+                    cout<<"Has seleccionado  la opción 3\n"<<endl;
+                    cout<<"Le gustaría ver este libro:\n"<<endl;
+                    cout<<"1) Si"<<endl;
+                    cout<<"2) Otra recomendación"<<endl;
+                    cout<<"3) Salir\n"<<endl;
+                    cin>>resp3;
+
+                    if (resp3 == 3){
+                        menu_libros();
+                    }
+                    else if (resp3 == 2 ){
+                            cout<< "\tDeje que limpiemos los resultados del sistema"<<endl;
+                            cout<< "\tEspere un momento..."<<endl;
+
+                            cout<<"\t";system("pause");
+
+                            recomendaciones();
+                        }
+                        else {
+                            libro_3();
+                        }
+                break;
+
+                case 4:
+                    cout<<"Has seleccionado  la opción 4\n"<<endl;
+                    cout<<"Le gustaría ver este libro:\n"<<endl;
+                    cout<<"1) Si"<<endl;
+                    cout<<"2) Otra recomendación"<<endl;
+                    cout<<"3) Salir\n"<<endl;
+                    cin>>resp4;
+
+                    if (resp4 == 3){
+                        menu_libros();
+                    }
+                    else if (resp4 == 2 ){
+                            cout<< "\tDeje que limpiemos los resultados del sistema"<<endl;
+                            cout<< "\tEspere un momento..."<<endl;
+
+                            cout<<"\t"; system("pause");
+
+                            recomendaciones();
+                        }
+                        else {
+                            libro_4();
+                        }
+                break;
+
+                case 5:
+                    cout<<"Has seleccionado  la opción 4\n"<<endl;
+                    cout<<"Le gustaría ver este libro:\n"<<endl;
+                    cout<<"1) Si"<<endl;
+                    cout<<"2) Otra recomendación"<<endl;
+                    cout<<"3) Salir\n"<<endl;
+                    cin>>resp5;
+
+                    if (resp5 == 3){
+                        menu_libros();
+                    }
+                    else if (resp5 == 2 ){
+                            cout<< "\tDeje que limpiemos los resultados del sistema"<<endl;
+                            cout<< "\tEspere un momento..."<<endl;
+
+                            cout<<"\t"; system("pause");
+
+                            recomendaciones();
+                        }
+                        else {
+                            libro_5();
+                        }
+                break;
+
+                default:
+                    cout<<"\tDe acuerdo... ¡Vuelva pronto!\n"<<endl;
+
+                    cout<<"\t"; system("pause");
+
+                    menu_inicio();
+
+                break;
+            }
+        }while (op < 1 || op > 3);
+    }while (op = 0);
+
+}
+        //RECOEMNDACIONES TERMINA//
 
           //LIBROS Y SUS TITULOS//
 void titulo_libros()
