@@ -4,8 +4,6 @@
 #include <iomanip>
 #include <fstream>
 #include <conio.h>
-#include <stdlib.h>
-#include <time.h>
 #define YELLOW  "\x1b[33m"
 #define WHITE   "\x1B[37m"
 #define TRUE 1
@@ -74,7 +72,7 @@ void INICIO(string title)
 void menu_inicio();
 void menu_principal();
     void menu_libros();
-          void recomendaciones(); //Falta - Momoru
+          void recomendaciones();
           void titulo_libros();
           void libro_1();
           void libro_2();
@@ -87,7 +85,6 @@ void menu_principal();
           void nombre_editorial();
                void registrar_usuario();
     void registro_prestamos();
-    void registro_alumnos(); //Dudable... colocar o no?
     void reportar_libro();
 
 
@@ -233,6 +230,7 @@ void menu_libros()
         switch(opcion)
           {
           case 1:
+              recomendaciones();
             break;
 
           case 2:
@@ -307,7 +305,6 @@ void recomendaciones()
 {
     int op;
     int op_1;
-    int i;
     int resp1;
     int resp2;
     int resp3;
@@ -320,22 +317,18 @@ void recomendaciones()
         system("cls");
         INICIO("RECOMENDACIONES");
 
-        cout <<"\t¡Bienvenido a esta sección!"<<endl;
-        cout <<endl;
+        cout <<"\t¡Bienvenido a la sección de recomendaciones!"<<endl;
         cout <<"\tAquí te recomendaremos un libro de nuestro sistema."<<endl;
-        cout <<endl;
-        cout <<"\t¿Estas listo?\n"<<endl;
-        cout <<endl;
+         cout <<"\n"<<endl;
+        cout <<"\tEl sistema lanzará un número aleatorio entre 0 y 5, y ese será el libro que le correspondrá"<<endl;
+        cout <<"\n\t¿Está listo/a?"<<endl;
 
-        cout <<"\t"; system("pause");
-        cout <<"\n"<<endl;
-        cout <<"\tEl sistema lanzará un número y ese será el libro que le correspondrá"<<endl;
-        cout <<"\n"<<endl;
+        cout <<"\n\n\n"<<endl;
         cout <<"\t"; system("pause");
 
-        cout << endl;
         op = rand() % (5+1);
-        cout <<"\tHa tocado la opcion:"<< op;
+        cout <<"\n\n\n"<< endl;
+        cout <<"\tEl sistema indica esta opción: -->  "<< op<<"  <--"<<endl;
         cout <<"\n"<< endl;
 
         cout <<"\t1) Opción 1\n"<<endl;
@@ -343,29 +336,26 @@ void recomendaciones()
         cout <<"\t3) Opción 3\n"<<endl;
         cout <<"\t4) Opción 4\n"<<endl;
         cout <<"\t5) Opción 5\n"<<endl;
-        cout <<"\t0) Salir\n"<<endl;
+        cout <<"\t0) <-- Volver al menú de libros\n"<<endl;
+        cout <<"\tIngrese la opción que brindó el sistema: "; cin>>op_1;
 
-        cout <<"\tIngrese la opción brindo el sistema:"; cin>>op_1;
-
-        cout<<"\n"<<endl;
+        cout<<"\n\n"<<endl;
 
         do {
             switch (op_1){
                 case 1:
                     cout<<"\tHa seleccionado la opción 1\n"<<endl;
-                    cout<<"\tLe gustaría ver este libro:\n"<<endl;
-                    cout<<"\t1) Si"<<endl;
-                    cout<<"\t2) Otra recomendación"<<endl;
-                    cout<<"\t3) Salir\n"<<endl;
-                    cout<<"\t"; cin>>resp1;
+                    cout<<"\t¿Desea visualizar este libro?\n"<<endl;
+                    cout<<"\t1) Sí"<<endl;
+                    cout<<"\t2) Probar otra recomendación"<<endl;
+                    cout<<"\t3) <-- Volver al menú de libros\n"<<endl;
+                    cout<<"\t";
+                    cin>>resp1;
 
                     if (resp1 == 3){
                         menu_libros();
                     }
                     else if (resp1 == 2 ){
-                            cout<< "\tReiniciaremos el sistema"<<endl;
-                            cout<< "\tEspere un momento..."<<endl;
-
                             recomendaciones();
                         }
                         else {
@@ -374,22 +364,18 @@ void recomendaciones()
                 break;
 
                 case 2:
-                    cout<<"Has seleccionado la opción 2\n"<<endl;
-                    cout<<"Le gustaría ver este libro:\n"<<endl;
-                    cout<<"1) Si"<<endl;
-                    cout<<"2) Otra recomendación"<<endl;
-                    cout<<"3) Salir\n"<<endl;
+                    cout<<"\tHas seleccionado la opción 2\n"<<endl;
+                    cout<<"\t¿Desea visualizar este libro?\n"<<endl;
+                    cout<<"\t1) Sí"<<endl;
+                    cout<<"\t2) Probar otra recomendación"<<endl;
+                    cout<<"\t3) <-- Volver al menú de libros\n"<<endl;
+                    cout<<"\t";
                     cin>>resp2;
 
                     if (resp2 == 3){
                         menu_libros();
                     }
                     else if (resp2 == 2 ){
-                            cout<< "\tDeje que limpiemos los resultados del sistema"<<endl;
-                            cout<< "\tEspere un momento..."<<endl;
-
-                            cout<<"\t"; system("pause");
-
                             recomendaciones();
                         }
                         else {
@@ -398,22 +384,18 @@ void recomendaciones()
                 break;
 
                 case 3:
-                    cout<<"Has seleccionado  la opción 3\n"<<endl;
-                    cout<<"Le gustaría ver este libro:\n"<<endl;
-                    cout<<"1) Si"<<endl;
-                    cout<<"2) Otra recomendación"<<endl;
-                    cout<<"3) Salir\n"<<endl;
+                    cout<<"\tHas seleccionado  la opción 3\n"<<endl;
+                    cout<<"\t¿Desea visualizar este libro?\n"<<endl;
+                    cout<<"\t1) Sí"<<endl;
+                    cout<<"\t2) Probar otra recomendación"<<endl;
+                    cout<<"\t3) <-- Volver al menú de libros\n"<<endl;
+                    cout<<"\t";
                     cin>>resp3;
 
                     if (resp3 == 3){
                         menu_libros();
                     }
                     else if (resp3 == 2 ){
-                            cout<< "\tDeje que limpiemos los resultados del sistema"<<endl;
-                            cout<< "\tEspere un momento..."<<endl;
-
-                            cout<<"\t";system("pause");
-
                             recomendaciones();
                         }
                         else {
@@ -422,22 +404,18 @@ void recomendaciones()
                 break;
 
                 case 4:
-                    cout<<"Has seleccionado  la opción 4\n"<<endl;
-                    cout<<"Le gustaría ver este libro:\n"<<endl;
-                    cout<<"1) Si"<<endl;
-                    cout<<"2) Otra recomendación"<<endl;
-                    cout<<"3) Salir\n"<<endl;
+                    cout<<"\tHas seleccionado  la opción 4\n"<<endl;
+                    cout<<"\t¿Desea visualizar este libro?\n"<<endl;
+                    cout<<"\t1) Sí"<<endl;
+                    cout<<"\t2) Probar otra recomendación"<<endl;
+                    cout<<"\t3) <-- Volver al menú de libros\n"<<endl;
+                    cout<<"\t";
                     cin>>resp4;
 
                     if (resp4 == 3){
                         menu_libros();
                     }
                     else if (resp4 == 2 ){
-                            cout<< "\tDeje que limpiemos los resultados del sistema"<<endl;
-                            cout<< "\tEspere un momento..."<<endl;
-
-                            cout<<"\t"; system("pause");
-
                             recomendaciones();
                         }
                         else {
@@ -446,22 +424,18 @@ void recomendaciones()
                 break;
 
                 case 5:
-                    cout<<"Has seleccionado  la opción 4\n"<<endl;
-                    cout<<"Le gustaría ver este libro:\n"<<endl;
-                    cout<<"1) Si"<<endl;
-                    cout<<"2) Otra recomendación"<<endl;
-                    cout<<"3) Salir\n"<<endl;
+                    cout<<"\tHas seleccionado  la opción 4\n"<<endl;
+                    cout<<"\t¿Desea visualizar este libro?\n"<<endl;
+                    cout<<"\t1) Sí"<<endl;
+                    cout<<"\t2) Probar otra recomendación"<<endl;
+                    cout<<"\t3) <-- Volver al menú de libros\n"<<endl;
+                    cout<<"\t";
                     cin>>resp5;
 
                     if (resp5 == 3){
                         menu_libros();
                     }
                     else if (resp5 == 2 ){
-                            cout<< "\tDeje que limpiemos los resultados del sistema"<<endl;
-                            cout<< "\tEspere un momento..."<<endl;
-
-                            cout<<"\t"; system("pause");
-
                             recomendaciones();
                         }
                         else {
@@ -469,13 +443,8 @@ void recomendaciones()
                         }
                 break;
 
-                default:
-                    cout<<"\tDe acuerdo... ¡Vuelva pronto!\n"<<endl;
-
-                    cout<<"\t"; system("pause");
-
-                    menu_inicio();
-
+                case 0:
+                    menu_libros();
                 break;
             }
         }while (op < 1 || op > 3);
@@ -517,7 +486,7 @@ void titulo_libros()
 
         cout << "\t8) <-- Volver al menú de libros"<<endl;
         cout << "\t9) <-- Volver al menú principal"<<endl;
-        cout << "\t0) Salir"<<endl;
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -593,9 +562,10 @@ void libro_1()
         cout << "\t¿Que acción quiere realizar?:"<<endl;
         cout << "\n";
 
-        cout << "\t2) Solicitar préstamo -->"<<endl;
-        cout << "\t1) <-- Volver al menú principal"<<endl;
-        cout << "\t0) Salir"<<endl;
+        cout << "\t1) Solicitar préstamo -->"<<endl;
+        cout << "\t2) <-- Volver al menú de títulos"<<endl;
+        cout << "\t3) <-- Volver al menú principal"<<endl;
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -603,11 +573,16 @@ void libro_1()
         switch(opcion)
           {
           case 1:
-              menu_principal();
+              registrar_usuario();
+
             break;
 
           case 2:
-              registrar_usuario();
+              titulo_libros();
+            break;
+
+          case 3:
+              menu_principal();
             break;
 
           case 0:
@@ -645,9 +620,10 @@ void libro_2()
         cout << "\t¿Que acción quiere realizar?:"<<endl;
         cout << "\n";
 
-        cout << "\t2) Solicitar préstamo -->"<<endl;
-        cout << "\t1) <-- Volver al menú principal"<<endl;
-        cout << "\t0) Salir"<<endl;
+        cout << "\t1) Solicitar préstamo -->"<<endl;
+        cout << "\t2) <-- Volver al menú de títulos"<<endl;
+        cout << "\t3) <-- Volver al menú principal"<<endl;
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -655,11 +631,16 @@ void libro_2()
         switch(opcion)
           {
           case 1:
-              menu_principal();
+              registrar_usuario();
+
             break;
 
           case 2:
-              registrar_usuario();
+              titulo_libros();
+            break;
+
+          case 3:
+              menu_principal();
             break;
 
           case 0:
@@ -697,9 +678,10 @@ void libro_3()
         cout << "\t¿Que acción quiere realizar?:"<<endl;
         cout << "\n";
 
-        cout << "\t2) Solicitar préstamo -->"<<endl;
-        cout << "\t1) <-- Volver al menú principal"<<endl;
-        cout << "\t0) Salir"<<endl;
+        cout << "\t1) Solicitar préstamo -->"<<endl;
+        cout << "\t2) <-- Volver al menú de títulos"<<endl;
+        cout << "\t3) <-- Volver al menú principal"<<endl;
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -707,11 +689,16 @@ void libro_3()
         switch(opcion)
           {
           case 1:
-              menu_principal();
+              registrar_usuario();
+
             break;
 
           case 2:
-              registrar_usuario();
+              titulo_libros();
+            break;
+
+          case 3:
+              menu_principal();
             break;
 
           case 0:
@@ -749,9 +736,10 @@ void libro_4()
         cout << "\t¿Que acción quiere realizar?:"<<endl;
         cout << "\n";
 
-        cout << "\t2) Solicitar préstamo -->"<<endl;
-        cout << "\t1) <-- Volver al menú principal"<<endl;
-        cout << "\t0) Salir"<<endl;
+        cout << "\t1) Solicitar préstamo -->"<<endl;
+        cout << "\t2) <-- Volver al menú de títulos"<<endl;
+        cout << "\t3) <-- Volver al menú principal"<<endl;
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -759,11 +747,16 @@ void libro_4()
         switch(opcion)
           {
           case 1:
-              menu_principal();
+              registrar_usuario();
+
             break;
 
           case 2:
-              nodisp();
+              titulo_libros();
+            break;
+
+          case 3:
+              menu_principal();
             break;
 
           case 0:
@@ -801,9 +794,10 @@ void libro_5()
         cout << "\t¿Que acción quiere realizar?:"<<endl;
         cout << "\n";
 
-        cout << "\t2) Solicitar préstamo -->"<<endl;
-        cout << "\t1) <-- Volver al menú principal"<<endl;
-        cout << "\t0) Salir"<<endl;
+        cout << "\t1) Solicitar préstamo -->"<<endl;
+        cout << "\t2) <-- Volver al menú de títulos"<<endl;
+        cout << "\t3) <-- Volver al menú principal"<<endl;
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -811,11 +805,16 @@ void libro_5()
         switch(opcion)
           {
           case 1:
-              menu_principal();
+              registrar_usuario();
+
             break;
 
           case 2:
-              nodisp();
+              titulo_libros();
+            break;
+
+          case 3:
+              menu_principal();
             break;
 
           case 0:
@@ -859,8 +858,9 @@ void libro_AGREGADO()
         cout << "\n";
 
 
-        cout << "\t1) <-- Volver al menú principal"<<endl;
-        cout << "\t2) Solicitar préstamo -->"<<endl;
+        cout << "\t1) Solicitar préstamo -->"<<endl;
+        cout << "\t2) <-- Volver al menú de títulos"<<endl;
+        cout << "\t3) <-- Volver al menú principal"<<endl;
         cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
@@ -869,11 +869,16 @@ void libro_AGREGADO()
         switch(opcion)
           {
           case 1:
-              menu_principal();
+              registrar_usuario();
+
             break;
 
           case 2:
-              registrar_usuario();
+              titulo_libros();
+            break;
+
+          case 3:
+              menu_principal();
             break;
 
           case 0:
@@ -954,7 +959,7 @@ void nombre_autor()
 
         cout << "\t2) <-- Volver al menú de libros"<<endl;
         cout << "\t1) <-- Volver al menú principal"<<endl;
-        cout << "\t0) Salir"<<endl;
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -1005,7 +1010,7 @@ void nombre_editorial()
 
         cout << "\t2) <-- Volver al menú  de libros"<<endl;
         cout << "\t1) <-- Volver al menú principal"<<endl;
-        cout << "\t0) Salir"<<endl;
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -1145,10 +1150,10 @@ void reportar_libro()
             cout << "\n";
             cout<<"\tTelefono: " << telefono<< endl;
             cout << "\n";
-            cout << "En breves nos contactaremos con usted.\n"<<endl;
+            cout << "\tEn breves nos contactaremos con usted.\n"<<endl;
 
             cout << "\t1) <-- Volver al menú principal"<<endl;
-            cout << "\t0) Salir"<<endl;
+            cout << "\t0) Salir del programa."<<endl;
             cout << "\n \n\t";
             cin >> opcion;
             cout << "\n \n";
