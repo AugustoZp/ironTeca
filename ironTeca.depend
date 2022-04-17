@@ -32,3 +32,22 @@
 	<stdlib.h>
 	<time.h>
 
+1650165093 source:c:\users\forza\desktop\ironteca editable\ironteca\main.cpp
+	<iostream>
+	<string.h>
+	<cstdlib>
+	<iomanip>
+	<fstream>
+	<conio.h>
+	<stdio.h>
+
+1650167398 source:c:\users\perra\music\ironteca\main.cpp
+	<iostream>
+	<string.h>
+	<string>
+	<cstdlib>
+	<iomanip>
+	<fstream>
+	<conio.h>
+	<stdio.h>
+

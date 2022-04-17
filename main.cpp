@@ -4,12 +4,13 @@
 #include <iomanip>
 #include <fstream>
 #include <conio.h>
+#include <stdio.h>
 #define YELLOW  "\x1b[33m"
 #define WHITE   "\x1B[37m"
 #define TRUE 1
 #define FALSE 0
 #define USER "root"  //USUARIO PARA INICIAR SESIÓN EN MODO ADMIN//
-#define PASS "admin"  //CONTRASEÑA PARA INICIAR SESIÓN EN MODO ADMIN//
+#define PASS "00346520"  //CONTRASEÑA PARA INICIAR SESIÓN EN MODO ADMIN//
 using namespace std;
 
 
@@ -98,6 +99,7 @@ void iniciar_como_admin();
 
 int main()
 {
+
     menu_inicio();
 
     return 0;
@@ -170,7 +172,7 @@ void menu_principal()
         cout << "\n";
         cout << "\t9) <-- Volver al menú de inicio"<<endl;
         cout << "\n";
-        cout << "\t0) salir."<<endl;
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -480,7 +482,7 @@ void titulo_libros()
         ifstream archivo("LIBDISP.txt");
         getline(archivo,nombrelib);
         cout<<"\t6) "<<nombrelib<<" -->"<<endl;
-
+        archivo.close();
         cout << "\n\n\n\n\n";
 
 
@@ -837,6 +839,15 @@ void libro_AGREGADO()
         INICIO(nombrelib);
 
         ifstream archivo("LIBDISP.txt");
+        if(archivo.fail())
+        {
+        cout<<"\t\t\tESTE LIBRO HA SIDO ELIMINADO DEL REGISTRO.";
+        cout<<"\n\n\t";system("pause");
+        do{
+            titulo_libros();
+          }while(repetir);
+        }
+        cout << "\n";
         getline(archivo,nombrelib);
         cout << "\tTitulo: "<<nombrelib<<endl;
         cout << "\n";
@@ -857,7 +868,7 @@ void libro_AGREGADO()
         cout << "\t¿Que acción desea realizar?:"<<endl;
         cout << "\n";
 
-
+        archivo.close();
         cout << "\t1) Solicitar préstamo -->"<<endl;
         cout << "\t2) <-- Volver al menú de títulos"<<endl;
         cout << "\t3) <-- Volver al menú principal"<<endl;
@@ -1218,6 +1229,7 @@ void iniciar_como_admin()
             else
             {
             cout << "\n\n\tUsuario o contrasena incorrectos"<<endl;
+            cout<<"\t";
             system("pause");
             }
 
@@ -1364,7 +1376,7 @@ void agregar()
         cout << "\n";
         cout << "\t9) <-- Volver al menú principal(usuario)"<<endl;
         cout << "\n";
-        cout << "\t0) salir."<<endl;
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";
@@ -1399,5 +1411,105 @@ void agregar()
            //ELIMINAR INICIA//
 void eliminar()
 {
+    int opcion;
+    bool repetir = true;
+    string pass;
+    int x = 1;
+    bool c = false;
+    do
+    {
+        system("cls");
+        INICIO("ELIMINAR LIBRO (ADMINISTRADOR)");
+        cout << "\tPor favor, introduce los siguientes datos:"<<endl;
+        cout << "\n \n";
+        cout << "\tNombre de libro: "<<endl;
+        cout << "\n\t";
+        char nlii[30];
+        cin>>nlii;
+
+
+        while(x<=3 and c==false)
+        {
+            cout << "\n\tContraseña de administrador:"<<endl;
+            cout << "\n\t";
+            char caracter;
+            caracter = getch();
+            pass = "";
+            while(caracter!=13){
+                pass.push_back(caracter);
+            cout<<"*";
+            caracter = getch();
+            }
+            x++;
+            if((pass == PASS))
+            {
+               c=true;
+            }
+            else
+            {
+            cout << "\n\n\tContraseña incorrecta"<<endl;
+            cout<<"\t";
+            system("pause");
+            }
+        }
+            if (c==true)
+            {
+                ifstream archivo;
+                archivo.open("LIBDISP.txt",ios::in);
+        if(archivo.fail())
+        {
+        cout<<"\tEl libro no existe en el registro.";
+        exit(1);
+        }
+            archivo.close();
+            remove("LIBDISP.txt");
+            cout << "\n\n\tEL LIBRO HA SIDO ELIMINADO DEL REGISTRO CON ÉXITO."<<endl;
+
+            cout << "\n\n";
+        cout << "\n\n";
+        cout << "\t1) Ver libros agregados -->"<<endl;
+        cout << "\n";
+        cout << "\t8) <-- Volver al menú principal(administrador)"<<endl;
+        cout << "\n";
+        cout << "\t9) <-- Volver al menú principal(usuario)"<<endl;
+        cout << "\n";
+        cout << "\t0) Salir del programa."<<endl;
+        cout << "\n \n\t";
+        cin >> opcion;
+        cout << "\n \n";
+
+        switch(opcion)
+          {
+          case 1:
+              titulo_libros();
+            break;
+
+          case 8:
+              menu_admin();
+            break;
+
+          case 9:
+              menu_principal();
+            break;
+
+          case 0:
+              cout << "\t¡¡Hasta luego!!"<<endl;
+            exit(0);
+          }
+            }
+            else
+            {
+            cout << "\n\n\tHa superado el límite de intentos, intente más tarde"<<endl;
+            cout<<"\t";
+            system("pause");
+            menu_admin();
+            }
+
+
+    } while(repetir);
+
+
 }
+
+
            //ELIMINAR TERMINA//
