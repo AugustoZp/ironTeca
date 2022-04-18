@@ -6,13 +6,14 @@
 	<iomanip>
 	<string>
 
-1647857837 source:c:\users\david\onedrive\escritorio\ironteca\main.cpp
+1650183331 source:c:\users\david\onedrive\escritorio\ironteca\main.cpp
 	<iostream>
 	<string.h>
 	<cstdlib>
 	<iomanip>
-	<string>
-	<locale.h>
+	<fstream>
+	<conio.h>
+	<stdio.h>
 
 1649038761 source:d:\augustozpp\ud\cuatrimestre 5\programación estructurada\ironteca\ironteca\main.cpp
 	<iostream>

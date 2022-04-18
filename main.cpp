@@ -279,6 +279,8 @@ void registro_prestamos()
         cout << "\n";
         getline(archivo,nombrelib);
         cout << "\tTítulo del libro: "<<nombrelib<<endl;
+        cout << "\n";
+        cout << "\tFecha de solicitud: 21 de abril del 2022 \n"<<endl;
         cout << "\n\n\n\n\n";
 
 
@@ -453,7 +455,7 @@ void recomendaciones()
     }while (op = 0);
 
 }
-        //RECOEMNDACIONES TERMINA//
+        //RECOMENDACIONES TERMINA//
 
           //LIBROS Y SUS TITULOS//
 void titulo_libros()
@@ -749,7 +751,7 @@ void libro_4()
         switch(opcion)
           {
           case 1:
-              registrar_usuario();
+              nodisp();
 
             break;
 
@@ -807,7 +809,7 @@ void libro_5()
         switch(opcion)
           {
           case 1:
-              registrar_usuario();
+              nodisp();
 
             break;
 
@@ -1095,6 +1097,8 @@ void registrar_usuario()
         cout << "\t¡Usuario registrado con éxito!\n"<<endl;
 
         cout << "\t¡El préstamo se ha completado! puedes pasar a recoger el libro con el folio: "<<matri<<folio<<endl;
+        cout << "\n";
+        cout << "\tFecha limite de entrega: 10 de mayo del 2022\n"<<endl;
 
         archivo2.close();
         cout << "\n\n\n";
