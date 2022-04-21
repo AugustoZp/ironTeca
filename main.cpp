@@ -32,7 +32,7 @@ string matri;
 
 
           //INICIO DE TITULARES NO TOCAR//
-void INICIO(string title)
+void INICIO(string title) //Augusto//
 
 {
     int i;
@@ -70,29 +70,29 @@ void INICIO(string title)
 
 
           //INDICE//
-void menu_inicio();
-void menu_principal();
-    void menu_libros();
-          void recomendaciones();
-          void titulo_libros();
-          void libro_1();
-          void libro_2();
-          void libro_3();
-          void libro_4();
-          void libro_5();
-          void libro_AGREGADO();
-          void nodisp();
-          void nombre_autor();
-          void nombre_editorial();
-               void registrar_usuario();
-    void registro_prestamos();
-    void reportar_libro();
+void menu_inicio(); //Augusto//
+void menu_principal(); //Augusto//
+    void menu_libros(); //Augusto//
+          void recomendaciones(); //Moana//
+          void titulo_libros(); //David//
+          void libro_1(); //David//
+          void libro_2(); //David//
+          void libro_3(); //David//
+          void libro_4(); //David//
+          void libro_5(); //David//
+          void libro_AGREGADO(); //Augusto//
+          void nodisp(); //David//
+          void nombre_autor(); //David//
+          void nombre_editorial(); //David//
+               void registrar_usuario(); //David//
+    void registro_prestamos(); //Moana//
+    void reportar_libro(); //Augusto//
 
 
-void iniciar_como_admin();
-    void menu_admin();
-         void agregar();
-         void eliminar(); //Falta - Antonio
+void iniciar_como_admin(); //Augusto//
+    void menu_admin(); //Augusto//
+         void agregar(); //Antonio//
+         void eliminar(); //Antonio//
 
 
 
@@ -128,7 +128,7 @@ void menu_inicio()
         cout << "\n";
         cout << "\t2) Iniciar como administrador -->"<<endl;
         cout << "\n";
-        cout << "\t0) salir del programa."<<endl;
+        cout << "\t0) Salir del programa."<<endl;
         cout << "\n \n\t";
         cin >> opcion;
         cout << "\n \n";

@@ -15,13 +15,15 @@
 	<conio.h>
 	<stdio.h>
 
-1649038761 source:d:\augustozpp\ud\cuatrimestre 5\programación estructurada\ironteca\ironteca\main.cpp
+1650574431 source:d:\augustozpp\ud\cuatrimestre 5\programación estructurada\ironteca\ironteca\main.cpp
 	<iostream>
 	<string.h>
+	<string>
 	<cstdlib>
 	<iomanip>
 	<fstream>
 	<conio.h>
+	<stdio.h>
 
 1650573619 source:c:\users\moana\documents\github\drop\ironteca\main.cpp
 	<iostream>
