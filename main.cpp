@@ -324,13 +324,13 @@ void recomendaciones()
         cout <<"\t¡Bienvenido a la sección de recomendaciones!"<<endl;
         cout <<"\tAquí te recomendaremos un libro de nuestro sistema."<<endl;
          cout <<"\n"<<endl;
-        cout <<"\tEl sistema lanzará un número aleatorio entre 0 y 5, y ese será el libro que le correspondrá"<<endl;
+        cout <<"\tEl sistema lanzará un número aleatorio entre 1 y 5, y ese será el libro que le correspondrá"<<endl;
         cout <<"\n\t¿Está listo/a?"<<endl;
 
         cout <<"\n\n\n"<<endl;
         cout <<"\t"; system("pause");
 
-        op = rand() % (5+1);
+        op = 1 + rand() % (4+1);
         cout <<"\n\n\n"<< endl;
         cout <<"\tEl sistema indica esta opción: -->  "<< op<<"  <--"<<endl;
         cout <<"\n"<< endl;
@@ -428,7 +428,7 @@ void recomendaciones()
                 break;
 
                 case 5:
-                    cout<<"\tHas seleccionado  la opción 4\n"<<endl;
+                    cout<<"\tHas seleccionado  la opción 5\n"<<endl;
                     cout<<"\t¿Desea visualizar este libro?\n"<<endl;
                     cout<<"\t1) Sí"<<endl;
                     cout<<"\t2) Probar otra recomendación"<<endl;
@@ -451,7 +451,7 @@ void recomendaciones()
                     menu_libros();
                 break;
             }
-        }while (op < 1 || op > 3);
+        }while (op < 1 || op > 5);
     }while (op = 0);
 
 }
